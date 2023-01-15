@@ -1,6 +1,6 @@
 package com.osukatech.adminDashboard.Service;
 
-import com.osukatech.adminDashboard.CustomerRepo.CustomerRepo;
+import com.osukatech.adminDashboard.EmployeeRepo.EmployeeRepo;
 import com.osukatech.adminDashboard.DTO.EmployeeDTO;
 import com.osukatech.adminDashboard.DTO.EmployeeSaveDTO;
 import com.osukatech.adminDashboard.entity.Employee;
@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class EmployeeServiceIMPL implements EmployeeService {
     @Autowired
-    private CustomerRepo customerRepo;
+    private EmployeeRepo employeeRepo;
 
     // This method adds new customers
     @Override
@@ -23,14 +23,14 @@ public class EmployeeServiceIMPL implements EmployeeService {
                 employeeSaveDTO.getEmployee_email(),
                 employeeSaveDTO.getEmployee_mobile()
         );
-        customerRepo.save(employee);
+        employeeRepo.save(employee);
         return employee.getEmployee_name();
     }
 
     // This method fetches all customer records from the database
     @Override
     public List<EmployeeDTO> getAllEmployees() {
-        List<Employee> getEmployees = customerRepo.findAll();
+        List<Employee> getEmployees = employeeRepo.findAll();
         List<EmployeeDTO> employeeDTOList = new ArrayList<>();
         for(Employee a: getEmployees)
         {

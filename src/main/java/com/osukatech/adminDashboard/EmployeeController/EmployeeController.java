@@ -1,4 +1,4 @@
-package com.osukatech.adminDashboard.CustomerController;
+package com.osukatech.adminDashboard.EmployeeController;
 
 import com.osukatech.adminDashboard.DTO.EmployeeDTO;
 import com.osukatech.adminDashboard.DTO.EmployeeSaveDTO;
@@ -10,22 +10,23 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping("api/v1/customer")
+@RequestMapping("api/v1/employee")
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    //  New customers are registered using this url
+    //  New employees are registered using this url
     @PostMapping(path = "/save")
     public String saveEmployee(@RequestBody EmployeeSaveDTO employeeSaveDTO) {
         String id = employeeService.addEmployee(employeeSaveDTO);
                 return id;
     }
 
-    //  List of the customers
+    //  List of the employees
     @GetMapping(path = "/get-all-customers")
-    public List<EmployeeDTO> getAllCustomers() {
-        List<EmployeeDTO> allCustomers = employeeService.getAllCustomers();
-        return allCustomers;
+    public List<EmployeeDTO> getAllEmployees() {
+        List<EmployeeDTO> allEmployees = employeeService.getAllEmployees();
+        return allEmployees;
     }
+
 }
